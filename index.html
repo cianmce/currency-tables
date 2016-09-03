@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+  <link rel="stylesheet" href="/css/app.css">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  
+  <!--Import Google Icon Font-->
+  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <title>Currency Table</title>
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/img/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+
+
+     
+  </head>
+  <body>
+
+  <div class="container">
+
+
+    <div class="row">
+      <div class="col s5">
+        <label>From Currency</label>
+        <select id="from-currency" class="browser-default">
+          <option value="" disabled="disabled" selected>Choose "FROM" currency</option>
+        </select>
+      </div> 
+
+      <dir class="col s2 center-align">
+        <a class="waves-effect waves-light btn-large btn-flat swap-from-to"><i class="material-icons">swap_horiz</i></a>
+      </dir>
+
+      <div class="col s5">
+        <label>To Currency</label>
+        <select id="to-currency" class="browser-default">
+          <option value="" disabled="disabled" selected>Choose "TO" currency</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s6 offset-s3">
+        <a class="waves-effect waves-light btn add_table"><i class="material-icons left">add</i>Add table</a>
+      </div>
+    </div>
+<!--     
+    <div class="row">
+<!- -       // TODO add dropdown/inputbox? of steps
+      // auto do both directions - ->
+
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">view_list</i>
+            <input id="icon_prefix" type="text">
+            <label for="icon_prefix">Steps</label>
+          </div>
+          <div class="col s6">
+            <a class="waves-effect waves-light btn add_table"><i class="material-icons left">add</i>Add table</a>
+          </div>
+        </div>
+      </form>
+
+ -->
+
+    </div>
+
+    <div id="tables" class="row">
+    </div>
+  </div>
+
+
+  <script id="table_template" type="x-tmpl-mustache">
+    <div class="col s6">
+      <table class="striped responsive-table card-panel hoverable">
+        <thead>
+          <tr>
+            <th class="from">{{from_currency}}</th>
+            <th class="to">{{to_currency}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#rows}}
+          <tr>
+            <td class="from">{{from_val}}</td>
+            <td class="to">{{to_val}}</td>
+          </tr>
+          {{/rows}}
+        </tbody>
+      </table>
+    </div>
+  </script>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"></script>
+  <script src="/js/money.min.js"></script>
+  <script src="/js/currencies.js"></script>
+  <script src="/js/app.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+.add_table{
+    width: 100%;
+}
+#tables th.to, #tables td.to{
+    border-left: 1px solid #d0d0d0;
+}
+#tables th, #tables td{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 50%;
+}
+
