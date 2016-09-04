@@ -22,7 +22,7 @@ var default_to   = 'USD';
 
 
 function get_current_prices(){
-    $.getJSON("http://api.fixer.io/latest", function(data) {
+    $.getJSON("https://api.fixer.io/latest", function(data) {
         var rates = data.rates;
         rates[data['base']] = 1; // add base, normally eur
         fx.rates = rates;
