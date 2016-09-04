@@ -16,8 +16,8 @@ $(function(){
 
 // GLOBALS
 var available_currencies = {};
-var default_from = 'EUR';
-var default_to   = 'USD';
+var default_from = 'USD';
+var default_to   = 'EUR';
 // GLOBALS
 
 
