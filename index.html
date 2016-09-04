@@ -34,27 +34,26 @@
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
   <meta name="msapplication-TileColor" content="#2BBBAD">
   <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
-  <meta name="theme-color" content="#2BBBAD">
-     
-  </head>
-  <body>
+  <meta name="theme-color" content="#2BBBAD">   
+</head>
+<body>
 
   <div class="container">
 
 
     <div class="row">
-      <div class="col s5">
+      <div class="col s12 m5">
         <label>From Currency</label>
         <select id="from-currency" class="browser-default">
           <option value="" disabled="disabled" selected>Choose "FROM" currency</option>
         </select>
       </div> 
 
-      <dir class="col s2 center-align">
+      <dir class="col s12 m2 center-align">
         <a class="waves-effect waves-light btn-large btn-flat swap-from-to"><i class="material-icons">swap_horiz</i></a>
       </dir>
 
-      <div class="col s5">
+      <div class="col s12 m5">
         <label>To Currency</label>
         <select id="to-currency" class="browser-default">
           <option value="" disabled="disabled" selected>Choose "TO" currency</option>
@@ -63,7 +62,7 @@
     </div>
 
     <div class="row">
-      <div class="col s6 offset-s3">
+      <div class="col s12 m6 offset-m3">
         <a class="waves-effect waves-light btn add_table"><i class="material-icons left">add</i>Add table</a>
       </div>
     </div>
@@ -73,8 +72,8 @@
 
 
   <script id="table_template" type="x-tmpl-mustache">
-    <div class="col s6">
-      <table class="striped responsive-table card-panel hoverable">
+    <div class="col s12 m6">
+      <table class="striped card-panel hoverable">
         <thead>
           <tr>
             <th class="from">{{from_currency}}</th>
