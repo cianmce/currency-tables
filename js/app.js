@@ -22,7 +22,7 @@ var default_to   = 'EUR';
 function remove_table(){
     var table_container = $(this).closest('.table-container');
 
-    table_container.slideUp(300, function(){
+    table_container.hide(300, function(){
         table_container.remove();
     });
 }
