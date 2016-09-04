@@ -9,6 +9,7 @@ $(function(){
         $('#from-currency').val($('#to-currency').val());
         $('#to-currency').val(from_currency);
     });
+    $('body').on('click', 'a.remove_table', remove_table);
 
 });
 
@@ -18,6 +19,13 @@ var default_from = 'USD';
 var default_to   = 'EUR';
 // GLOBALS
 
+function remove_table(){
+    var table_container = $(this).closest('.table-container');
+
+    table_container.slideUp(300, function(){
+        table_container.remove();
+    });
+}
 
 function get_current_prices(){
     $.getJSON("https://api.fixer.io/latest", function(data) {
@@ -34,6 +42,7 @@ function add_bitcoin(){
         fx.rates['BTC'] = 1/data['24h_avg'];
         fx.rates['VND'] = 24868.9578;
         init_currency_selects();
+        add_new_table();
     });
 }
 
@@ -60,7 +69,7 @@ function add_new_table(){
     // get multiplier
     var eur_rate = fx.convert(1, {from: 'EUR', to: from_currency});
     var multiplier = Math.pow(10, Math.round(Math.log10( eur_rate )));
-    console.log(multiplier);
+    // console.log(multiplier);
     if(multiplier > 1){
         digits_from = 0;
     }

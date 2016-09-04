@@ -72,12 +72,17 @@
 
 
   <script id="table_template" type="x-tmpl-mustache">
-    <div class="col s12 m6">
+    <div class="col s12 m6 table-container">
       <table class="striped card-panel hoverable">
         <thead>
           <tr>
             <th class="from">{{from_currency}}</th>
-            <th class="to">{{to_currency}}</th>
+            <th class="to">
+              {{to_currency}}
+              <a class="btn-floating right btn waves-effect waves-light red remove_table">
+                <i class="material-icons">remove</i>
+              </a>
+            </th>
           </tr>
         </thead>
         <tbody>
