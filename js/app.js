@@ -1,8 +1,6 @@
 "use strict";
 
 $(function(){
-    // console.log(currencies);
-    // init_currency_selects();
     get_current_prices();
 
     $('.add_table').click(add_new_table);
@@ -46,15 +44,12 @@ function add_new_table(){
 
     var digits_from = currencies[from_currency].digits;
     var digits_to   = currencies[to_currency].digits;
-    if(digits_to === undefined)
+    if(digits_to === undefined){
         digits_to = 2;
-    // console.log('digits_from:'+digits_from);
+    }
 
     // 1 "from" = rate "to"
     var rate = fx.convert(1, {from: from_currency, to: to_currency});
-
-    // console.log("1 " + from_currency + " = " + rate + " "+to_currency);
-    // console.log("1 " + from_currency + " = " + rate.toFixed(2) + " "+to_currency);
 
     var template_data = {
         'from_currency': from_currency,
