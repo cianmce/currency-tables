@@ -42,7 +42,6 @@ function add_bitcoin(){
         fx.rates['BTC'] = 1/data['24h_avg'];
         fx.rates['VND'] = 24868.9578;
         init_currency_selects();
-        add_new_table();
     });
 }
 
