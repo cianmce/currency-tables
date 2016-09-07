@@ -54,8 +54,6 @@ function get_steps(){
         return null;
     });
 
-    console.log(steps);
-
     if(steps.length>0){
         return steps;
     }
@@ -64,7 +62,6 @@ function get_steps(){
 
 function edit_steps(e){
     e.preventDefault();
-    console.log('current steps: ' + get_steps());
     $('.steps_container').slideToggle(300);
 
 }
@@ -126,7 +123,6 @@ function add_new_table(){
 
     // get multiplier
     var multiplier = get_multiplier();
-    // console.log(multiplier);
     if(multiplier > 1){
         digits_from = 0;
     }
