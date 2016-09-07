@@ -65,7 +65,23 @@
       <div class="col s12 m6 offset-m3">
         <a class="waves-effect waves-light btn add_table"><i class="material-icons left">add</i>Add table</a>
       </div>
+      <div class="col s12 m3">
+        <a href="#" class="edit_steps right">
+          <i class="material-icons">mode_edit</i>
+          Edit Steps
+        </a>
+      </div>
     </div>
+    <div class="row steps_container" style="display: none;">
+      <div class="input-field col s9 offset-m2 m8">
+        <input id="steps" type="text" value="1,2,3,4,5,10,25,30,35,45">
+        <label for="steps">Steps</label>
+      </div>
+      <div class="col s3">
+        <h4>X <span id="multiplier">1</span></h4>
+      </div>
+    </div>
+
     <div id="tables" class="row">
     </div>
   </div>

@@ -2,8 +2,16 @@
 
 $(function(){
     get_current_prices();
+    $.when( got_prices ).done(add_bitcoin);
+    $.when( got_bitcoin ).done(init_currency_selects);
 
     $('.add_table').click(add_new_table);
+    $('.steps_container').keypress(function(e) {
+        if(e.which == 13) {
+            add_new_table();
+        }
+    });
+
     $('.swap-from-to').click(function(){
         var from_currency = $('#from-currency').val();
         $('#from-currency').val($('#to-currency').val());
@@ -11,13 +19,55 @@ $(function(){
     });
     $('body').on('click', 'a.remove_table', remove_table);
 
+    $('.edit_steps').click(edit_steps);
+
+    $('select').on('change', set_multiplier);
+
+
 });
 
 // GLOBALS
 var available_currencies = {};
 var default_from = 'USD';
 var default_to   = 'EUR';
+
+var default_row_step = [1,2,3,4,5,10,25,30,35,45];
+
+var got_prices  = $.Deferred();
+var got_bitcoin = $.Deferred();
 // GLOBALS
+
+function set_multiplier(){
+    var multiplier = get_multiplier();
+    $('#multiplier').text(multiplier);
+}
+
+function get_steps(){
+    // validates and returns steps or default
+    var steps = $('#steps').val().split(/[\s*(\,|\s)\s*]+/);
+    
+    steps = steps.map(function(n){
+        n = +n;
+        if(n!=NaN){
+            return n;
+        }
+        return null;
+    });
+
+    console.log(steps);
+
+    if(steps.length>0){
+        return steps;
+    }
+    return default_row_step;
+}
+
+function edit_steps(e){
+    e.preventDefault();
+    console.log('current steps: ' + get_steps());
+    $('.steps_container').slideToggle(300);
+
+}
 
 function remove_table(){
     var table_container = $(this).closest('.table-container');
@@ -32,7 +82,10 @@ function get_current_prices(){
         var rates = data.rates;
         rates[data['base']] = 1; // add base, normally eur
         fx.rates = rates;
-        add_bitcoin();
+        // Vietnamese Dong not got from this API
+        fx.rates['VND'] = 24868.9578;
+
+        got_prices.resolve();
     });
 }
 
@@ -40,9 +93,15 @@ function add_bitcoin(){
     var url = 'https://api.bitcoinaverage.com/ticker/EUR/';
     $.getJSON(url, function(data) {
         fx.rates['BTC'] = 1/data['24h_avg'];
-        fx.rates['VND'] = 24868.9578;
-        init_currency_selects();
+
+        got_bitcoin.resolve();
     });
+}
+
+function get_multiplier(){
+    var from_currency = $('#from-currency').val();
+    var eur_rate = fx.convert(1, {from: 'EUR', to: from_currency});
+    return Math.pow(10, Math.round(Math.log10( eur_rate )));
 }
 
 function add_new_table(){
@@ -66,17 +125,15 @@ function add_new_table(){
     }
 
     // get multiplier
-    var eur_rate = fx.convert(1, {from: 'EUR', to: from_currency});
-    var multiplier = Math.pow(10, Math.round(Math.log10( eur_rate )));
+    var multiplier = get_multiplier();
     // console.log(multiplier);
     if(multiplier > 1){
         digits_from = 0;
     }
 
-    var row_step = [1,2,3,4,5,10,25,30,35,45];
-
-    for (var i = 0; i < row_step.length; i++) {
-        var step = row_step[i] * multiplier;
+    var steps = get_steps();
+    for (var i = 0; i < steps.length; i++) {
+        var step = steps[i] * multiplier;
         template_data.rows.push({
             'from_val': step.toFixed(digits_from), 
             'to_val': (step*rate).toFixed(digits_to)
