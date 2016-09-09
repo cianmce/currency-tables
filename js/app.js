@@ -79,7 +79,7 @@ function get_current_prices(){
         var rates = data.rates;
         rates[data['base']] = 1; // add base, normally eur
         fx.rates = rates;
-        // Vietnamese Dong not got from this API
+        // Not currently got from this API
         fx.rates['VND'] = 24868.9578;
         fx.rates['KHR'] = 0.0002158808;
 
