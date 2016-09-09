@@ -81,6 +81,7 @@ function get_current_prices(){
         fx.rates = rates;
         // Vietnamese Dong not got from this API
         fx.rates['VND'] = 24868.9578;
+        fx.rates['KHR'] = 0.0002158808;
 
         got_prices.resolve();
     });
