@@ -1,4 +1,4 @@
 Generate Currency Tables
 
 
-# [Live Demo](https://cianmce.github.io/money)
+# [Live Demo](https://cianmce.github.io/currency-tables)
