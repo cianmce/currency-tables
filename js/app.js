@@ -16,6 +16,8 @@ $(function(){
         var from_currency = $('#from-currency').val();
         $('#from-currency').val($('#to-currency').val());
         $('#to-currency').val(from_currency);
+        // Trigger change
+        $('select').change();
     });
     $('body').on('click', 'a.remove_table', remove_table);
 
