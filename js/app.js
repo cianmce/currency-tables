@@ -82,7 +82,7 @@ function get_current_prices(){
         rates[data['base']] = 1; // add base, normally eur
         fx.rates = rates;
         // Not currently got from this API
-        fx.rates['VND'] = 24868.9578;
+        fx.rates['VND'] = 22711.79;
         fx.rates['KHR'] = 4634.68;
 
         got_prices.resolve();
@@ -90,10 +90,9 @@ function get_current_prices(){
 }
 
 function add_bitcoin(){
-    var url = 'https://api.bitcoinaverage.com/ticker/EUR/';
-    $.getJSON(url, function(data) {
-        fx.rates['BTC'] = 1/data['24h_avg'];
-
+    var url = 'https://blockchain.info/tobtc?currency=USD&value=1';
+    $.get(url, function(data) {
+        fx.rates['BTC'] = +data;
         got_bitcoin.resolve();
     });
 }
@@ -162,5 +161,3 @@ function init_currency_selects(){
     from.val(default_from);
     to.val(default_to);
 }
-
-
