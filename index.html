@@ -34,27 +34,26 @@
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
   <meta name="msapplication-TileColor" content="#2BBBAD">
   <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
-  <meta name="theme-color" content="#2BBBAD">
-     
-  </head>
-  <body>
+  <meta name="theme-color" content="#2BBBAD">   
+</head>
+<body>
 
   <div class="container">
 
 
     <div class="row">
-      <div class="col s5">
+      <div class="col s12 m5">
         <label>From Currency</label>
         <select id="from-currency" class="browser-default">
           <option value="" disabled="disabled" selected>Choose "FROM" currency</option>
         </select>
       </div> 
 
-      <dir class="col s2 center-align">
+      <dir class="col s12 m2 center-align">
         <a class="waves-effect waves-light btn-large btn-flat swap-from-to"><i class="material-icons">swap_horiz</i></a>
       </dir>
 
-      <div class="col s5">
+      <div class="col s12 m5">
         <label>To Currency</label>
         <select id="to-currency" class="browser-default">
           <option value="" disabled="disabled" selected>Choose "TO" currency</option>
@@ -63,22 +62,43 @@
     </div>
 
     <div class="row">
-      <div class="col s6 offset-s3">
+      <div class="col s12 m6 offset-m3">
         <a class="waves-effect waves-light btn add_table"><i class="material-icons left">add</i>Add table</a>
       </div>
+      <div class="col s12 m3">
+        <a href="#" class="edit_steps right">
+          <i class="material-icons">mode_edit</i>
+          Edit Steps
+        </a>
+      </div>
     </div>
+    <div class="row steps_container" style="display: none;">
+      <div class="input-field col s9 offset-m2 m8">
+        <input id="steps" type="text" value="1,2,3,4,5,10,25,30,35,45">
+        <label for="steps">Steps</label>
+      </div>
+      <div class="col s3 m2">
+        <h4>X <span id="multiplier">1</span></h4>
+      </div>
+    </div>
+
     <div id="tables" class="row">
     </div>
   </div>
 
 
   <script id="table_template" type="x-tmpl-mustache">
-    <div class="col s6">
-      <table class="striped responsive-table card-panel hoverable">
+    <div class="col s12 m6 l3 table-container">
+      <table class="striped card-panel hoverable">
         <thead>
           <tr>
             <th class="from">{{from_currency}}</th>
-            <th class="to">{{to_currency}}</th>
+            <th class="to">
+              {{to_currency}}
+              <a class="btn-floating right btn waves-effect waves-light red remove_table">
+                <i class="material-icons">remove</i>
+              </a>
+            </th>
           </tr>
         </thead>
         <tbody>
