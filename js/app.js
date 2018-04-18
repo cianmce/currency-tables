@@ -24,8 +24,6 @@ $(function(){
     $('.edit_steps').click(edit_steps);
 
     $('select').on('change', set_multiplier);
-
-
 });
 
 // GLOBALS
@@ -66,7 +64,6 @@ function get_steps(){
 function edit_steps(e){
     e.preventDefault();
     $('.steps_container').slideToggle(300);
-
 }
 
 function remove_table(){
