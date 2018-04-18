@@ -77,14 +77,12 @@ function remove_table(){
 }
 
 function get_current_prices(){
-    $.getJSON("https://api.fixer.io/latest", function(data) {
+    $.getJSON("http://data.fixer.io/api/latest?access_key=ecad8695c248f5ba62979cdd8a91b379", function(data) {
         var rates = data.rates;
-        rates[data['base']] = 1; // add base, normally eur
+        // rates[data['base']] = 1; // add base, normally eur
         fx.rates = rates;
         // Not currently got from this API
-        fx.rates['VND'] = 22711.79;
-        fx.rates['KHR'] = 4634.68;
-
+        // fx.rates['OTHER'] = 1234.56;
         got_prices.resolve();
     });
 }
