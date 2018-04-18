@@ -32,6 +32,7 @@ $(function(){
 var available_currencies = {};
 var default_from = 'USD';
 var default_to   = 'EUR';
+var currency_url = 'https://openexchangerates.org/api/latest.json?app_id=7a861f999405474c8eb3579599b1a6c1';
 
 var default_row_step = [1,2,3,4,5,10,25,30,35,45];
 
@@ -77,7 +78,7 @@ function remove_table(){
 }
 
 function get_current_prices(){
-    $.getJSON("http://data.fixer.io/api/latest?access_key=ecad8695c248f5ba62979cdd8a91b379", function(data) {
+    $.getJSON(currency_url, function(data) {
         var rates = data.rates;
         // rates[data['base']] = 1; // add base, normally eur
         fx.rates = rates;
